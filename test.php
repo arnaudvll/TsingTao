@@ -1,5 +1,5 @@
 <?php
-require 'tpl/libs/Smarty.class.php';
+require 'libs/Smarty.class.php';
 
 $smarty = new Smarty();
 
@@ -19,35 +19,43 @@ $data = $sth->fetchAll(PDO::FETCH_ASSOC);
 $smarty->assign("meridiens",$data);
 
 $sql = "SELECT * FROM public.patho"  ;
+
 if (!empty($_GET['meridien'])) {
     $sql = $sql . ' WHERE mer IN(';
     $codes = [];
     for ($i=0; $i < count($_GET['meridien']); $i++) { 
-        $codes[':code'.$i] = $_GET['meridien'][$i];
+        $codes[$i] = "'".$_GET['meridien'][$i]."'";
+    }
+    $sql = $sql . implode(', ', $codes);
+    $sql = $sql . ')';
+}
+
+$sth = $dbh->prepare( $sql );
+$sth->execute();
+$dataM = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+$smarty->assign("pathologies", $dataM);
+
+
+$sql = "SELECT * FROM public.symptpatho"  ;
+
+if (!empty($_GET['pathologie'])) {
+    $sql = $sql . ' WHERE idp IN(';
+    $codes = [];
+    for ($i=0; $i < count($_GET['pathologie']); $i++) { 
+        $codes[$i] = "'".$_GET['pathologie'][$i]."'";
     }
     $sql = $sql . implode(', ', array_keys($codes));
     $sql = $sql . ')';
 }
+
 $sth = $dbh->prepare( $sql );
-var_dump($sql);
 $sth->execute($codes);
-$data = $sth->fetchAll(PDO::FETCH_ASSOC);
+$dataS = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-$smarty->assign("pathologies",$data);
-
-$sql = "SELECT * FROM public.symptome"  ;
-$sth = $dbh->prepare( $sql );
-$sth->execute();
-$data = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-$smarty->assign("caracteristiques",$data);
+$smarty->assign("caracteristiques",$dataS);
 
 $smarty->display('HTML/formulaire2.tpl');
-
-if ($_GET["P"]) {
-    echo "slt";
-}
-
 
 ?>
 

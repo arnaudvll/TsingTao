@@ -70,10 +70,9 @@
             <div id="caracteristiques">
                 <h4>Caractéristiques</h4>
                 {foreach $caracteristiques as $caracteristique}
-                    <label class="container">{$caracteristique.desc}
-                        <input type="checkbox" name="{$caracteristique.ids}">
-                        <span class="checkmark"></span>
-                    </label>
+                    <ul >
+                        <li>{$caracteristique.desc}</li>
+                    </ul>
                 {/foreach} 
         </div>  
         <input type="submit" value="valider">
