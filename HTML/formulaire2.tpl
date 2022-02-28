@@ -24,6 +24,20 @@
             <div id="div-phrase">
                 "La vie c'est pas un kiwi"
               </div>
+            
+            <form method="POST" action="../test.php">
+                <label for="utilisateur">Nom d'utilisateur:</label><br>
+                <input type="text" id="utilisateur" name="utilisateur" required><br><br>
+        
+                <label for="mdp">Mot de passe:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <input type="submit" name="connexion" value="Connexion">  
+                <input type="submit" name="creation_compte" value="Création de compte">
+                             
+                <p id='msgerreur' style="display:none;">Identifiants incorrects. Veuillez réessayer.</p>
+            </form>
+
         </div>
 
 
