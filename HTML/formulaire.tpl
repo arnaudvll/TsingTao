@@ -25,17 +25,18 @@
                 "La vie c'est pas un kiwi"
               </div>
             
-            <form method="POST" action="../test.php">
-                <label for="utilisateur">Nom d'utilisateur:</label><br>
-                <input type="text" id="utilisateur" name="utilisateur" required><br><br>
+            <form method="POST" action="../PHP/test.php">
+                <label for="utilisateur" style={$display_connexion}>Nom d'utilisateur:</label><br>
+                <input type="text" id="utilisateur" name="utilisateur" style={$display_connexion} required><br><br>
         
-                <label for="mdp">Mot de passe:</label><br>
-                <input type="password" id="password" name="password" required><br><br>
+                <label for="mdp" style={$display_connexion}>Mot de passe:</label><br>
+                <input type="password" id="password" name="password" style={$display_connexion} required><br><br>
 
-                <input type="submit" name="connexion" value="Connexion">  
-                <input type="submit" name="creation_compte" value="Création de compte">
+                <input  type="submit" name="connexion" value="Connexion" style={$display_connexion}>  
+                <input  type="submit" name="creation_compte" value="Création de compte" style={$display_connexion}>
+                <input type="submit" name="deconnexion" value="Déconnexion" style={$display_deconnexion}>
                              
-                <p id='msgerreur' style="display:none;">Identifiants incorrects. Veuillez réessayer.</p>
+                <p id='msgerreur'>{$msgerreur}</p>
             </form>
 
         </div>
@@ -44,7 +45,7 @@
                   
 <!------------------------------------------------------------------- BARRE DE NAVIGATION ------------------------------------------------------------->
         <div class="topnav">
-          <a class="active" href="../test.php">Formulaire</a>
+          <a class="active" href="../PHP/test.php">Formulaire</a>
           <a href="../HTML/patho.html">Pathologies</a>
           <a href="../HTML/contact.html">Contact</a>
           <input type="text" placeholder="Search..">
@@ -55,7 +56,7 @@
  <!------------------------------------------------------------------- Liste des Meridiens ------------------------------------------------------------------------->
 
  
-        <form method="GET" action="../test.php">
+        <form method="GET" action="../PHP/test.php">
             <div id="centre">
                 <div id="meridiens">
                 <h4>Liste des Méridiens</h4>
@@ -103,5 +104,6 @@
                 src="../Medias/Abundance.mp3">
             </audio>
         </figure>
+        <script src="../JS/formulaire.js"></script>
     </body>
 </html>
