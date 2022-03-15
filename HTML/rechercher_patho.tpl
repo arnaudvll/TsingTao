@@ -17,24 +17,24 @@
                 <h1 id="titre"> Tsing Tao </h1>
             </div>
             <div id="div-logo">
-                <a href="../HTML/formulaire.html">
+                <a href="../PHP/symptome_patho.php">
                     <img id="logo" src="../Medias/zen-logo.jpg" alt="">
                 </a>
             </div>
             <div id="div-phrase">
                 Rechercher une pathologie
-              </div>
+            </div>
             
-            <form method="POST" action="../PHP/test.php">
-                <label for="utilisateur" style={$display_connexion}>Nom d'utilisateur:</label><br>
-                <input type="text" id="utilisateur" name="utilisateur" style={$display_connexion} required><br><br>
+            <form method="POST" action="../PHP/rechercher_patho.php">
+                <label for="utilisateur" style="{$display_connexion}">Nom d'utilisateur:</label><br>
+                <input type="text" id="utilisateur" name="utilisateur" style="{$display_connexion}" {$required}><br><br>
         
-                <label for="mdp" style={$display_connexion}>Mot de passe:</label><br>
-                <input type="password" id="password" name="password" style={$display_connexion} required><br><br>
+                <label for="mdp" style="{$display_connexion}">Mot de passe:</label><br>
+                <input type="password" id="password" name="password" style="{$display_connexion}" {$required}><br><br>
 
-                <input  type="submit" name="connexion" value="Connexion" style={$display_connexion}>  
-                <input  type="submit" name="creation_compte" value="Création de compte" style={$display_connexion}>
-                <input type="submit" name="deconnexion" value="Déconnexion" style={$display_deconnexion}>
+                <input  type="submit" name="connexion" value="Connexion" style="{$display_connexion}">  
+                <input  type="submit" name="creation_compte" value="Création de compte" style="{$display_connexion}">
+                <input  type="submit" name="deconnexion" value="Déconnexion" style="{$display_deconnexion}">
                              
                 <p id='msgerreur'>{$msgerreur}</p>
             </form>
@@ -47,8 +47,6 @@
         <div class="topnav">
           <a class="active" href="../PHP/symptome_patho.php">Liste des symptômes et des pathologies</a>
           <a class="active" href="../PHP/rechercher_patho.php">Rechercher une pathologie</a>
-          <a href="../HTML/contact.html">Contact</a>
-          <input type="text" placeholder="Search..">
         </div>                   
                   
         
@@ -84,13 +82,13 @@
 <!------------------------------------------------------------------- Pathologies trouvées ------------------------------------------------------------------------->
             <div id="caracteristiques">
                 <h4>Pathologies correspondantes :</h4>
+                <ul>
                     {foreach $liste_pathologies_rechercher as $pathologie_trouver}
-                    <ul >
                         <li>{$pathologie_trouver}</li>
-                    </ul>
                     {/foreach} 
+                </ul>
             </div>
-            <input type="submit" value="valider" style="height:80px" style="widht:130px" background-color= #04AA6D>
+            <input type="submit" value="valider" style="height:80px" style="width:130px" background-color= #04AA6D>
         </form>
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -103,6 +101,5 @@
                 src="../Medias/Abundance.mp3">
             </audio>
         </figure>
-        <script src="../JS/formulaire.js"></script>
     </body>
 </html>
