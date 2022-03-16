@@ -22,10 +22,10 @@
                 </a>
             </div>
             <div id="div-phrase">
-                Rechercher une pathologie
+                Liste des symptômes et des pathologies
             </div>
             
-            <form method="POST" action="../PHP/rechercher_patho.php">
+            <form method="POST" action="../PHP/symptome_patho.php">
                 <label for="utilisateur" style="{$display_connexion}">Nom d'utilisateur:</label><br>
                 <input type="text" id="utilisateur" name="utilisateur" style="{$display_connexion}" {$required}><br><br>
         
@@ -45,10 +45,10 @@
                   
 <!------------------------------------------------------------------- BARRE DE NAVIGATION ------------------------------------------------------------->
         <div class="topnav">
-          <a class="active" href="../PHP/symptome_patho.php">Liste des symptômes et des pathologies</a>
-          <a class="active" href="../PHP/rechercher_patho.php">Rechercher une pathologie</a>
-          <a class="active" style="{$display_recherche}" href="../PHP/recherche.php">Rechercher une pathologie</a>
-        </div>                   
+            <a class="active" href="../PHP/symptome_patho.php">Liste des symptômes et des pathologies</a>
+            <a class="active" href="../PHP/recherche_patho_tri.php">Rechercher une pathologie par tri</a>
+            <a class="active" style="{$display_recherche}" href="../PHP/recherche_patho_motcle.php">Rechercher une pathologie par mot clé</a>
+        </div>                      
                   
         
   
@@ -86,6 +86,5 @@
                 src="../Medias/Abundance.mp3">
             </audio>
         </figure>
-        <script src="../JS/formulaire.js"></script>
     </body>
 </html>

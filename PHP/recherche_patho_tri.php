@@ -108,9 +108,13 @@ else {
     }
 }
 
+if (empty($liste_pathologies_rechercher)) {
+    $liste_pathologies_rechercher = "Pas de pathologie(s) trouvée(s)";
+}
+
 $smarty->assign("liste_pathologies_rechercher", $liste_pathologies_rechercher);
 
 /* --------------------------------------------------------------------------FINAL ------------------------------------------------*/
-$smarty->display('../HTML/rechercher_patho.tpl');
+$smarty->display('../HTML/recherche_patho_tri.tpl');
 ?>
 

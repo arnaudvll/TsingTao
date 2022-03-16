@@ -36,27 +36,31 @@ $sth->execute();
 $data_keysympt = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 
-$recherche = "";
+$recherche = NULL;
 if (isset($_POST["valider"])){
     $recherche = $_POST["recherche"];
 }
-foreach ($data_keywords as $keyword) { 
 
-    if ($keyword["name"]== $recherche) {
-        var_dump("aa");
-        foreach ($data_keysympt as $keysympt) {  
+$resultat = NULL;
+if (isset($recherche)) {
+    foreach ($data_keywords as $keyword) { 
 
-            if ($keysympt["idk"] == $keyword["idk"]) {
+        if ($keyword["name"]== $recherche) {
 
-                foreach ($data_sympt_patho as $sympt_patho) {
+            foreach ($data_keysympt as $keysympt) {  
 
-                    if ($sympt_patho["ids"] == $keysympt["ids"]) {
+                if ($keysympt["idk"] == $keyword["idk"]) {
 
-                        foreach ($data_patho as $patho){
+                    foreach ($data_sympt_patho as $sympt_patho) {
 
-                            if ($sympt_patho["idp"] == $patho["idp"]){
+                        if ($sympt_patho["ids"] == $keysympt["ids"]) {
 
-                                $resultat = $patho["desc"];
+                            foreach ($data_patho as $patho){
+
+                                if ($sympt_patho["idp"] == $patho["idp"]){
+
+                                    $resultat = $patho["desc"];
+                                }
                             }
                         }
                     }
@@ -64,9 +68,13 @@ foreach ($data_keywords as $keyword) {
             }
         }
     }
+
+    if (!isset($resultat)) {
+        $resultat = "Rentrez un autre mot clé";
+    }
 }
-var_dump($resultat);
+
 $smarty->assign("resultat", $resultat);
 
-$smarty->display('../HTML/recherche.tpl');
+$smarty->display('../HTML/recherche_patho_motcle.tpl');
 ?>
