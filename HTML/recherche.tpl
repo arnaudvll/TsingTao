@@ -43,8 +43,10 @@
                           
 <!------------------------------------------------------------------- BARRE DE NAVIGATION ------------------------------------------------------------->
         <div class="topnav">
-          <a class="active" href="../PHP/symptome_patho.php">Liste des symptômes et des pathologies</a>
-          <a class="active" href="../PHP/rechercher_patho.php">Rechercher une pathologie</a>
+            <a class="active" href="../PHP/symptome_patho.php">Liste des symptômes et des pathologies</a>
+            <a class="active" href="../PHP/rechercher_patho.php">Rechercher une pathologie</a>
+            <a class="active" style="{$display_recherche}" href="../PHP/recherche.php">Rechercher une pathologie</a>
+
         </div>                   
                   
         <form method = "POST" action="../PHP/recherche.php">
@@ -53,6 +55,7 @@
             <input  type="submit" name="valider" value="Valider">  
         </form>
 
+        <div>{$resultat}</div>
         
   
     
