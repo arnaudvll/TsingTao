@@ -3,6 +3,7 @@ $smarty->assign("display_connexion", "display:true");
 $smarty->assign('display_deconnexion', 'display:none');
 $smarty->assign("msgerreur", "");
 $smarty->assign("required", "required");
+$smarty->assign("display_recherche", "display:none");
 
 /* REQUETE USER */
 
@@ -21,6 +22,7 @@ if (isset($_POST['connexion'])) {
             $smarty->assign("msgerreur", "");
             $smarty->assign('display_deconnexion', 'display:true');
             $smarty->assign("display_connexion", "display:none");
+            $_SESSION["connect"] = 1;
             $connect = 1;            
         }
         else {
@@ -56,7 +58,7 @@ elseif (isset($_POST['creation_compte'])) {
     }
 }
 
-if ($connect == 1) {
+if ($_SESSION["connect"] == 1) {
     $smarty->assign("required", "");
 }
 
@@ -64,6 +66,11 @@ if (isset($_POST['deconnexion'])) {
     $smarty->assign("display_connexion", "display:true");
     $smarty->assign('display_deconnexion', 'display:none');
     $connect = 0;
+    $_SESSION["connect"] = 0;
+}
+
+if ($_SESSION["connect"] == 1) {
+    $smarty->assign("display_recherche", "display:true");
 }
 
 ?>

@@ -13,43 +13,49 @@ require './connexion.php'; #on importe après pour avoir smarty et la requete a 
 
 /* REQUETE PATHO */
 $sql = "SELECT * FROM public.patho"  ;
-    $sth = $dbh->prepare( $sql );
-    $sth->execute();
+$sth = $dbh->prepare( $sql );
+$sth->execute();
 $data_patho = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 /* REQUETE SYMPTOMES PATHO*/
 $sql = "SELECT * FROM public.symptpatho"  ;
 $sth = $dbh->prepare( $sql );
- $sth->execute();
+$sth->execute();
 $data_sympt_patho = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 /* REQUETE KEYWORDS */
-sql = "SELECT * FROM public.keywords"  ;
+$sql = "SELECT * FROM public.keywords"  ;
 $sth = $dbh->prepare( $sql );
- $sth->execute();
+$sth->execute();
 $data_keywords = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 /* REQUETE KEYSYMPT */
-sql = "SELECT * FROM public.keysympt"  ;
+$sql = "SELECT * FROM public.keysympt"  ;
 $sth = $dbh->prepare( $sql );
- $sth->execute();
+$sth->execute();
 $data_keysympt = $sth->fetchAll(PDO::FETCH_ASSOC);
 
+
+$recherche = "";
 if (isset($_POST["valider"])){
-    $recherche=$_POST["recherche"];
+    $recherche = $_POST["recherche"];
 }
+foreach ($data_keywords as $keyword) { 
 
-foreach ($data_keywords as $keywords)    /* On parcours toutes les pathologies */
-{   
-    if ($keywords["name"]== $recherche){
+    if ($keyword["name"]== $recherche) {
+        var_dump("aa");
+        foreach ($data_keysympt as $keysympt) {  
 
-        foreach ($data_keysympt as $keysympt)   /* On parcours tous les meridiens coché*/
-    {       
-            if ($keysympt["idk]"]== $keywords["idk"]){
-                foreach ($data_sympt_patho as $sympt_patho){
-                    if ($sympt_patho["ids"]==$keysympt["ids"]){
+            if ($keysympt["idk"] == $keyword["idk"]) {
+
+                foreach ($data_sympt_patho as $sympt_patho) {
+
+                    if ($sympt_patho["ids"] == $keysympt["ids"]) {
+
                         foreach ($data_patho as $patho){
-                            if ($sympt_patho["idp"]==$patho["idp"]){
+
+                            if ($sympt_patho["idp"] == $patho["idp"]){
+
                                 $resultat = $patho["desc"];
                             }
                         }
@@ -59,7 +65,8 @@ foreach ($data_keywords as $keywords)    /* On parcours toutes les pathologies *
         }
     }
 }
-
+var_dump($resultat);
+$smarty->assign("resultat", $resultat);
 
 $smarty->display('../HTML/recherche.tpl');
 ?>
