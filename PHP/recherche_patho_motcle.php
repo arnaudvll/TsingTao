@@ -74,7 +74,7 @@ if (isset($recherche)) {
     }
 }
 
-if ($resultat==NULL) {
+if ($resultat == NULL) {
     $resultat = "Veuillez entrer un mot clé";
 }
 

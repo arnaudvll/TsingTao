@@ -25,7 +25,7 @@
                 <h1 id="phrase">“La peur des piqûres, ça ne peut pas se guérir par l'acupuncture.” Pierre Legaré </h1>
             </div>
             <div id="div-connexion">
-                <form method="POST" action="../PHP/symptome_patho.php">
+                <form method="POST" action="../PHP/recherche_patho_tri.php">
                     <label id = "user" for="utilisateur" style="{$display_connexion}">Nom d'utilisateur:</label><br>
                     <input type="text" id="utilisateur" name="utilisateur" style="{$display_connexion}" {$required}><br><br>
 
