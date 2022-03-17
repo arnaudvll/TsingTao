@@ -109,7 +109,7 @@ else {
 }
 
 if (empty($liste_pathologies_rechercher)) {
-    $liste_pathologies_rechercher = "Pas de pathologie(s) trouvée(s)";
+    $liste_pathologies_rechercher = "Pas de pathologie trouvée";
 }
 
 $smarty->assign("liste_pathologies_rechercher", $liste_pathologies_rechercher);

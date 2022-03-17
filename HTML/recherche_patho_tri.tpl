@@ -3,7 +3,7 @@
 
 <html lang="fr">
     <head>
-        <link type="text/css" rel="stylesheet" href="../CSS/formulaire.css">
+        <link type="text/css" rel="stylesheet" href="../CSS/css_global.css">
         <meta charset="UTF-8">
         <title>Tsing Tao</title>
     </head>
@@ -12,34 +12,34 @@
 
 
 <!-----------------------------------------------------------------------ENTETE-------------------------------------------------------------------------------->
-        <div class="entete" >
-            <div id="div-titre">
-                <h1 id="titre"> Tsing Tao </h1>
-            </div>
-            <div id="div-logo">
-                <a href="../PHP/symptome_patho.php">
-                    <img id="logo" src="../Medias/zen-logo.jpg" alt="">
-                </a>
-            </div>
-            <div id="div-phrase">
-                Rechercher une pathologie par tri
-            </div>
-            
-            <form method="POST" action="../PHP/recherche_patho_tri.php">
-                <label for="utilisateur" style="{$display_connexion}">Nom d'utilisateur:</label><br>
-                <input type="text" id="utilisateur" name="utilisateur" style="{$display_connexion}" {$required}><br><br>
-        
-                <label for="mdp" style="{$display_connexion}">Mot de passe:</label><br>
-                <input type="password" id="password" name="password" style="{$display_connexion}" {$required}><br><br>
+                <div class="entete" >
+                <div id="div-titre">
+                    <h1 id="titre"> Tsing Tao </h1>
+                </div>
+                <div id="div-logo">
+                    <a href="../PHP/symptome_patho.php">
+                        <img id="logo" src="../Medias/zen-logo.jpg" alt="">
+                    </a>
+                </div>
+                <div id="div-phrase">
+                    <h1 id="phrase">“La peur des piqûres, ça ne peut pas se guérir par l'acupuncture.” Pierre Legaré </h1>
+                </div>
+                <div id="div-connexion">
+                    <form method="POST" action="../PHP/symptome_patho.php">
+                        <label id = "user" for="utilisateur" style="{$display_connexion}">Nom d'utilisateur:</label><br>
+                        <input type="text" id="utilisateur" name="utilisateur" style="{$display_connexion}" {$required}><br><br>
 
-                <input  type="submit" name="connexion" value="Connexion" style="{$display_connexion}">  
-                <input  type="submit" name="creation_compte" value="Création de compte" style="{$display_connexion}">
-                <input  type="submit" name="deconnexion" value="Déconnexion" style="{$display_deconnexion}">
-                             
-                <p id='msgerreur'>{$msgerreur}</p>
-            </form>
+                        <label id = "user" for="mdp" style="{$display_connexion}">Mot de passe:</label><br>
+                        <input type="password" id="password" name="password" style="{$display_connexion}" {$required}><br><br>
 
-        </div>
+                        <input  type="submit" name="connexion" value="Connexion" style="{$display_connexion}">  
+                        <input  type="submit" name="creation_compte" value="Création de compte" style="{$display_connexion}">
+                        <input  id ="deco" type="submit" name="deconnexion" value="Déconnexion" style="{$display_deconnexion}">
+                                    
+                        <p id='msgerreur'>{$msgerreur}</p>
+                    </form>
+                </div>
+                </div>
 
 
                   
@@ -53,12 +53,10 @@
         
   
  <!------------------------------------------------------------------- Liste des Meridiens ------------------------------------------------------------------------->
-
- 
+    <div id="centre">
+    <div id="meridiens">
         <form method="GET" action="../PHP/recherche_patho_tri.php">
-            <div id="centre">
-                <div id="meridiens">
-                <h4>Liste des Méridiens</h4>
+                <h4 id="titre_patho">Liste des Méridiens</h4>
                 {foreach $meridiens as $meridien}
                     <label class="container">{$meridien.nom}
                         <input type="checkbox" name="meridien[]" value="{$meridien.code}">
@@ -70,7 +68,7 @@
 
 <!------------------------------------------------------------------- Liste des Symptômes ------------------------------------------------------------------------------->
             <div id="pathologies">
-                <h4>Liste des Symptômes</h4>
+                <h4 id="titre_patho">Liste des Symptômes</h4>
                 {foreach $symptomes as $symptome}
                     <label class="container">{$symptome.desc}
                         <input type="checkbox" name="symptome[]" value="{$symptome.ids}">
@@ -82,15 +80,18 @@
 
 <!------------------------------------------------------------------- Pathologies trouvées ------------------------------------------------------------------------->
             <div id="caracteristiques">
-                <h4>Pathologies correspondantes :</h4>
+                <h4 id="titre_patho">Pathologies correspondantes :</h4>
                 <ul>
                     {foreach $liste_pathologies_rechercher as $pathologie_trouver}
                         <li>{$pathologie_trouver}</li>
                     {/foreach} 
                 </ul>
             </div>
-            <input type="submit" value="valider" style="height:80px" style="width:130px" background-color= #04AA6D>
+            <div>
+            <input id="valider" type="submit" value="Valider">
+            </div>
         </form>
+    </div>
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------->

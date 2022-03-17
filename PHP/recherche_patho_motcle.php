@@ -74,7 +74,12 @@ if (isset($recherche)) {
     }
 }
 
+if ($resultat==NULL) {
+    $resultat = "Veuillez entrer un mot clé";
+}
+
 $smarty->assign("resultat", $resultat);
+
 
 $smarty->display('../HTML/recherche_patho_motcle.tpl');
 ?>

@@ -3,7 +3,7 @@
 
 <html lang="fr">
     <head>
-        <link type="text/css" rel="stylesheet" href="../CSS/formulaire.css">
+        <link type="text/css" rel="stylesheet" href="../CSS/css_global.css">
         <meta charset="UTF-8">
         <title>Tsing Tao</title>
     </head>
@@ -22,23 +22,23 @@
                 </a>
             </div>
             <div id="div-phrase">
-                Liste des symptômes et des pathologies
+                <h1 id="phrase">“La peur des piqûres, ça ne peut pas se guérir par l'acupuncture.” Pierre Legaré </h1>
             </div>
+            <div id="div-connexion">
+                <form method="POST" action="../PHP/symptome_patho.php">
+                    <label id = "user" for="utilisateur" style="{$display_connexion}">Nom d'utilisateur:</label><br>
+                    <input type="text" id="utilisateur" name="utilisateur" style="{$display_connexion}" {$required}><br><br>
             
-            <form method="POST" action="../PHP/symptome_patho.php">
-                <label for="utilisateur" style="{$display_connexion}">Nom d'utilisateur:</label><br>
-                <input type="text" id="utilisateur" name="utilisateur" style="{$display_connexion}" {$required}><br><br>
-        
-                <label for="mdp" style="{$display_connexion}">Mot de passe:</label><br>
-                <input type="password" id="password" name="password" style="{$display_connexion}" {$required}><br><br>
+                    <label id = "user" for="mdp" style="{$display_connexion}">Mot de passe:</label><br>
+                    <input type="password" id="password" name="password" style="{$display_connexion}" {$required}><br><br>
 
-                <input  type="submit" name="connexion" value="Connexion" style="{$display_connexion}">  
-                <input  type="submit" name="creation_compte" value="Création de compte" style="{$display_connexion}">
-                <input  type="submit" name="deconnexion" value="Déconnexion" style="{$display_deconnexion}">
-                             
-                <p id='msgerreur'>{$msgerreur}</p>
-            </form>
-
+                    <input  type="submit" name="connexion" value="Connexion" style="{$display_connexion}">  
+                    <input  type="submit" name="creation_compte" value="Création de compte" style="{$display_connexion}">
+                    <input  id ="deco" type="submit" name="deconnexion" value="Déconnexion" style="{$display_deconnexion}">
+                                
+                    <p id='msgerreur'>{$msgerreur}</p>
+                </form>
+            </div>
         </div>
 
 
@@ -56,7 +56,7 @@
 
             <div id="centre">
                 <div id="meridiens">
-                    <h4>Liste des principales pathologies</h4>
+                    <h4 id="titre_patho">Liste des principales pathologies</h4>
                     <ul>
                         {foreach $pathologies as $pathologie}
                             <li>{$pathologie.desc}</li>
@@ -67,7 +67,7 @@
 
 <!------------------------------------------------------------------- Types de pathologies ------------------------------------------------------------------------->
                 <div id="pathologies">
-                    <h4>Liste des principaux symptômes</h4>
+                    <h4 id="titre_patho">Liste des principaux symptômes</h4>
                     <ul>
                         {foreach $symptomes as $symptome}
                             <li>{$symptome.desc}</li>
