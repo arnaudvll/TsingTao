@@ -17,8 +17,8 @@ Il est possible de cliquer sur un méridien et un symptome en pour filtrer les p
 d'utilisateurs étaients déjà dans la base de données. Nous avons donc complété cette 
 fonction et nous pouvons dorénavant nous enregistrer, avec un changement d'affichage lorsque l'utilisateur est connecté.
 
-Dans la base de donnée fournie, il n'y avait pas de table 'suers'. Nous en avons donc créee une en local.
-Il faut créer une table 'users' avec 2 colones : 'username' et 'password' pour faire marcher cette fonctionnalité
+ Dans la base de donnée fournie, il n'y avait pas de table 'users'. Nous en avons donc créee une en local.
+ Il faut créer une table 'users' avec 2 colones : 'username' et 'password' pour faire marcher cette fonctionnalité
 
 
 - Fonction de Recherche par mots clés : Nous avions démarré cette fonctionnalité mais elle n'était pas opérationnelle
